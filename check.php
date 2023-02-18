@@ -1,25 +1,27 @@
 <?php
 require("connect_db.php");
 
-// Get the form data
+
 $first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
+$password = $_POST["password"];
 
-// Construct the SQL query to check if the username and password exist in the database
-$sql = "SELECT * FROM customers WHERE first_name='$first_name' AND last_name='$last_name'";
+$sql = "SELECT * FROM customers WHERE first_name = ? AND password = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ss", $first_name, $password);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-// Execute the query and check if any rows were returned
-$result = mysqli_query($conn, $sql);
+
 if (mysqli_num_rows($result) > 0) {
-    //echo "Text exists in database.";
     header("Location: account.php");
     exit();
-
 } else {
-    echo "Text does not exist in database.";
+    echo "Invalid username or password.";
 }
 
-// Close the database connection
+
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
+
 ?>
 

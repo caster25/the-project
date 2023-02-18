@@ -1,18 +1,17 @@
 <?php
 require("connect_db.php");
 
-// Check connection
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Query the database
 $sql = "SELECT accounts.account_number, customers.first_name, customers.last_name, accounts.balance, accounts.open_date
 FROM accounts
 JOIN customers ON accounts.customer_id = customers.customer_id";
 $result = mysqli_query($conn, $sql);
 
-// Display the data in a table
+
 echo "<table>";
 echo "<tr><th>Account Number</th> <th>First Name</th> <th>Last Name</th> <th>Balance</th> <th>Open Date</th> </tr>";
 while ($row = mysqli_fetch_array($result)) {
@@ -26,7 +25,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</table>";
 
-// Close the database connection
+
 mysqli_close($conn);
 ?>
 <form method="post" action="b_deposit.php" >
@@ -35,10 +34,12 @@ mysqli_close($conn);
 <form method="post" action="b_withdraw.php" >
   <button type="submit">withdraw</button>
 </form>
+<form method="post" action="b_transfer.php">
+ <button type="submit">transfer money</button>
+</form>
 <form method="post" action="home.php">
   <button type="submit">went back earlier</button>
 </form>
-
 
 
 
