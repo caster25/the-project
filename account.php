@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 
 // Display the data in a table
 echo "<table>";
-echo "<tr><th>Account Number</th><th>First Name</th><th>Last Name</th><th>Balance</th><th>Open Date</th></tr>";
+echo "<tr><th>Account Number</th> <th>First Name</th> <th>Last Name</th> <th>Balance</th> <th>Open Date</th> </tr>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $row['account_number'] . "</td>";
