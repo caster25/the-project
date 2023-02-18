@@ -7,3 +7,6 @@
   <br>
   <button type="submit">withdraw</button>
 </form>
+<form method="post" action="account.php">
+  <button type="submit">went back earlier</button>
+</form>

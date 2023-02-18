@@ -22,3 +22,6 @@
       <input type="submit" value="ADD">
     </form>
   </div>
+  <form method="post" action="home.php">
+  <button type="submit">went back earlier</button>
+  </form>

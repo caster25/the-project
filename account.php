@@ -35,6 +35,9 @@ mysqli_close($conn);
 <form method="post" action="b_withdraw.php" >
   <button type="submit">withdraw</button>
 </form>
+<form method="post" action="home.php">
+  <button type="submit">went back earlier</button>
+</form>
 
 
 
