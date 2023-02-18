@@ -7,7 +7,7 @@ $address = $_POST['address'];
 $email =$_POST['email'];
 $phone_number = $_POST['phone_number'];
 $balance = $_POST['balance'];
-$passwords =$_POST['passwords'];
+$password =$_POST['password'];
 
 
 $sql = "INSERT INTO customers (first_name, last_name, address, email, phone_number, password) 
