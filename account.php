@@ -14,7 +14,7 @@
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 20px; /* new style */
+      margin-top: 20px;
     }
 
 		body {
@@ -106,8 +106,8 @@ if (isset($_SESSION['customer_id'])) {
             $balance = $row['balance'];
 
             echo "<h1>Account Summary</h1>";
-            echo "<h1>Account number:  . $account_number </h1>";
-            echo "<h1>Current balance: $  ". number_format($balance, 2). "</h1>" ;
+            echo "<h2>Account number:  . $account_number </h2>";
+            echo "<h2>Current balance: $  ". number_format($balance, 2). "</h2>" ;
         } else {
             echo "<h1>Invalid account number.</h1>";
         }
@@ -127,10 +127,10 @@ if (isset($_SESSION['customer_id'])) {
     $first_name = $row['first_name'];
     $last_name = $row['last_name'];
 
-    echo "<h2>Customer Information</h2>";
+    echo "<h1>Customer Information</h1>";
     echo "<h2>Name: " . $first_name . " " . $last_name . "</h2>";
     
-    // Display the latest time
+
     echo "<h2>Latest time: " . date('Y-m-d H:i:s') . "</h2>";
 
     mysqli_stmt_close($stmt);

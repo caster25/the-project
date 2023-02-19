@@ -14,7 +14,7 @@
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 20px; /* new style */
+      margin-top: 20px; 
     }
 
 		body {
