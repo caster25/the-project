@@ -82,11 +82,11 @@
 	</style>
 </head>
 <body>
-<form method="post" action="withdraw.php" onsubmit="return confirm('Are you sure you want to deposit this amount?')">
+<form method="post" action="withdraw.php" onsubmit="return confirm('Are you sure you want to withdraw this amount?')">
 <label for="account_number">Account Number:</label>
   <input type="text" name="account_number" required><br>
   <label for="amount">amount:</label>
-  <input type="number" name="amount" step="0.01" placeholder="Enter amount to deposit" required><br>
+  <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
   <button type="submit">withdraw</button>
 </form>
 </body>
