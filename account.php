@@ -1,4 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style>
+    button[type=submit] {
+      background-color: #4CAF50;
+      border: none;
+      color: #FFFFFF;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px; /* new style */
+    }
 
+		body {
+			background-color: #F7F7F7;
+			font-family: Arial, sans-serif;
+			padding: 20px;
+		}
+		h1 {
+			color: #333333;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+    h2 {
+			color: #333333;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		form {
+			background-color: #FFFFFF;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			padding: 20px;
+			width: 400px;
+			margin: 0 auto;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type=text],
+		input[type=password] {
+			border: 1px solid #CCCCCC;
+			border-radius: 3px;
+			padding: 8px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+		input[type=submit] {
+			background-color: #4CAF50;
+			border: none;
+			color: #FFFFFF;
+			padding: 10px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type=submit]:hover {
+			background-color: #3E8E41;
+		}
+		button[type=submit] {
+			background-color: #4CAF50;
+			border: none;
+			color: #FFFFFF;
+			padding: 10px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		button[type=submit]:hover {
+			background-color: #3E8E41;
+		}
+	</style>
+</head>
+<body>
 <?php
 session_start();
 
@@ -18,15 +106,15 @@ if (isset($_SESSION['customer_id'])) {
             $balance = $row['balance'];
 
             echo "<h1>Account Summary</h1>";
-            echo "<p>Account number: " . $account_number . "</p>";
-            echo "<p>Current balance: $" . number_format($balance, 2) . "</p>";
+            echo "<h1>Account number:  . $account_number </h1>";
+            echo "<h1>Current balance: $  ". number_format($balance, 2). "</h1>" ;
         } else {
-            echo "<p>Invalid account number.</p>";
+            echo "<h1>Invalid account number.</h1>";
         }
 
         mysqli_stmt_close($stmt);
     } else {
-        echo "<p>No account number specified.</p>";
+        echo "<h1>No account number specified.</h1>";
     }
 
     $query = "SELECT * FROM customers WHERE customer_id = ?";
@@ -40,10 +128,10 @@ if (isset($_SESSION['customer_id'])) {
     $last_name = $row['last_name'];
 
     echo "<h2>Customer Information</h2>";
-    echo "<p>Name: " . $first_name . " " . $last_name . "</p>";
+    echo "<h2>Name: " . $first_name . " " . $last_name . "</h2>";
     
     // Display the latest time
-    echo "<p>Latest time: " . date('Y-m-d H:i:s') . "</p>";
+    echo "<h2>Latest time: " . date('Y-m-d H:i:s') . "</h2>";
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
@@ -59,12 +147,17 @@ if (isset($_SESSION['customer_id'])) {
 <form method="post" action="b_withdraw.php" >
   <button type="submit">withdraw</button>
 </form>
-<form method="post" action="b_transfer.php">
+<?php
+/*<form method="post" action="b_transfer.php">
  <button type="submit">transfer money</button>
-</form>
+</form>*/
+?>
 <form method="post" action="home.php">
   <button type="submit">went back earlier</button>
 </form>
+
+</body>
+</html>
 
 
 
