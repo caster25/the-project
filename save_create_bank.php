@@ -11,6 +11,15 @@
       margin: 0;
       padding: 0;
     }
+    form {
+			background-color: #FFFFFF;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			padding: 20px;
+			width: 400px;
+			margin: 0 auto;
+		}
+    
 
     .container {
       margin: 50px auto;
@@ -38,8 +47,10 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+<form method="post" action="home.php">
+<div class="container">
     <?php
     require("connect_db.php");
 
@@ -81,7 +92,6 @@
 
     mysqli_close($conn);
     ?>
-    <form method="post" action="home.php">
       <button type="submit">Go to Login</button>
     </form>
   </div>
