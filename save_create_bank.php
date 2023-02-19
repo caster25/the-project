@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>Bank Account Application - Account Created</title>
+  <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background-color: rgb(225, 255, 255);
+      font-family: Kanit;;
       margin: 0;
       padding: 0;
     }
@@ -22,7 +25,7 @@
     }
 
     button {
-      background-color: #4CAF50;
+      background-color:rgb(0, 206, 255);
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -31,7 +34,7 @@
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: rgb(0, 255, 205);
     }
   </style>
 </head>

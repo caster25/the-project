@@ -2,9 +2,13 @@
 <html>
 <head>
   <title>Bank Account Application</title>
+  <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
+          
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background-color: rgb(225, 255, 255);
+      font-family: Kanit;;
       margin: 0;
       padding: 0;
     }
@@ -43,7 +47,7 @@
 
     input[type="submit"],
     button {
-      background-color: #4CAF50;
+      background-color: rgb(0, 205, 255);
       color: #fff;
       padding: 10px 20px;
       border: none;
@@ -53,7 +57,7 @@
 
     input[type="submit"]:hover,
     button:hover {
-      background-color: #45a049;
+      background-color: rgb(0, 255, 203);
     }
 
     .error {

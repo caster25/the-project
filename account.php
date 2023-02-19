@@ -2,24 +2,13 @@
 <html>
 <head>
 	<title>Login</title>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
+			
 	<style>
-    button[type=submit] {
-      background-color: #4CAF50;
-      border: none;
-      color: #FFFFFF;
-      padding: 10px 16px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
 		body {
-			background-color: #F7F7F7;
-			font-family: Arial, sans-serif;
+			background-color: rgb(225, 255, 255);
+			font-family: Kanit;
 			padding: 20px;
 		}
 		h1 {
@@ -27,7 +16,7 @@
 			margin-bottom: 20px;
 			text-align: center;
 		}
-    h2 {
+    	h2 {
 			color: #333333;
 			margin-bottom: 20px;
 			text-align: center;
@@ -70,7 +59,7 @@
 			background-color: #3E8E41;
 		}
 		button[type=submit] {
-			background-color: #4CAF50;
+			background-color: rgb(0, 205, 255);
 			border: none;
 			color: #FFFFFF;
 			padding: 10px 16px;
@@ -82,7 +71,7 @@
 			cursor: pointer;
 		}
 		button[type=submit]:hover {
-			background-color: #3E8E41;
+			background-color: rgb(0, 255, 205);
 		}
 	</style>
 </head>
@@ -141,6 +130,7 @@ if (isset($_SESSION['customer_id'])) {
     exit();
 }
 ?>
+
 </form>
 <form method="post" action="b_deposit.php" >
   <button type="submit">Deposit</button>

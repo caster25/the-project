@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>Login</title>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
 	<style>
     button[type=submit] {
-      background-color: #4CAF50;
+	  background-color: rgb(225, 255, 255);
       border: none;
       color: #FFFFFF;
       padding: 10px 16px;
@@ -19,7 +21,7 @@
 
 		body {
 			background-color: #F7F7F7;
-			font-family: Arial, sans-serif;
+			font-family: Kanit;
 			padding: 20px;
 		}
 		h1 {
@@ -70,7 +72,7 @@
 			background-color: #3E8E41;
 		}
 		button[type=submit] {
-			background-color: #4CAF50;
+			background-color: rgb(0, 205, 255);
 			border: none;
 			color: #FFFFFF;
 			padding: 10px 16px;
@@ -82,10 +84,11 @@
 			cursor: pointer;
 		}
 		button[type=submit]:hover {
-			background-color: #3E8E41;
+			background-color: rgb(0, 255, 203);
 		}
 	</style>
 </head>
+<body>
 <form>
 <?php
 require("connect_db.php");
@@ -122,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="post" action="home.php">
     <button type="submit">Black</button>
 </form>
+</body>
 </html>
 
 

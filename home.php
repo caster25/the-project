@@ -2,10 +2,12 @@
 <html>
 <head>
 	<title>Login</title>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
 	<style>
 		body {
-			background-color: #F7F7F7;
-			font-family: Arial, sans-serif;
+			font-family: Kanit;
+			background-color: rgb(225, 255, 255);
 			padding: 20px;
 		}
 		h1 {
@@ -36,7 +38,7 @@
 			margin-bottom: 20px;
 		}
 		input[type=submit] {
-			background-color: #4CAF50;
+			background-color: rgb(0, 205, 255);
 			border: none;
 			color: #FFFFFF;
 			padding: 10px 16px;
@@ -48,10 +50,10 @@
 			cursor: pointer;
 		}
 		input[type=submit]:hover {
-			background-color: #3E8E41;
+			background-color: rgb(0, 255, 205);
 		}
 		button[type=submit] {
-			background-color: #4CAF50;
+			background-color: rgb(0, 205, 255);
 			border: none;
 			color: #FFFFFF;
 			padding: 10px 16px;
@@ -63,7 +65,7 @@
 			cursor: pointer;
 		}
 		button[type=submit]:hover {
-			background-color: #3E8E41;
+			background-color: rgb(0, 255, 205);
 		}
 	</style>
 </head>
