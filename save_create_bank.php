@@ -14,8 +14,10 @@ $phone_number = $_POST['phone_number'];
 $balance = $_POST['balance'];
 
 // Insert new customer record
-$sql = "INSERT INTO customers (first_name, last_name, address, password, email, phone_number) VALUES ('$first_name', '$last_name', '$address', '$password', '$email', '$phone_number')";
+$sql = "INSERT INTO customers (first_name, last_name, address, password, email, phone_number ) 
+        VALUES ('$first_name', '$last_name', '$address', '$password', '$email', '$phone_number')";
 $result = mysqli_query($conn, $sql);
+
 
 if ($result) {
     // Get the customer_id of the newly inserted record

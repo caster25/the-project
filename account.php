@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -40,7 +41,9 @@ if (isset($_SESSION['customer_id'])) {
 
     echo "<h2>Customer Information</h2>";
     echo "<p>Name: " . $first_name . " " . $last_name . "</p>";
-
+    
+    // Display the latest time
+    echo "<p>Latest time: " . date('Y-m-d H:i:s') . "</p>";
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
@@ -49,8 +52,6 @@ if (isset($_SESSION['customer_id'])) {
     exit();
 }
 ?>
-
-
 
 <form method="post" action="b_deposit.php" >
   <button type="submit">Deposit</button>
