@@ -87,6 +87,7 @@
 	</style>
 </head>
 <body>
+<form>
 <?php
 session_start();
 
@@ -140,7 +141,7 @@ if (isset($_SESSION['customer_id'])) {
     exit();
 }
 ?>
-
+</form>
 <form method="post" action="b_deposit.php" >
   <button type="submit">Deposit</button>
 </form>
@@ -155,7 +156,7 @@ if (isset($_SESSION['customer_id'])) {
 <form method="post" action="home.php">
   <button type="submit">went back earlier</button>
 </form>
-
+</form>
 </body>
 </html>
 
