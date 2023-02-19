@@ -1,7 +1,6 @@
 <?php
 require("connect_db.php");
 
-
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -14,14 +13,14 @@ $sql = "UPDATE accounts SET balance = balance + $deposit_amount, open_date = '$d
 
 $result = mysqli_query($conn, $sql);
 
-
 if ($result) {
     echo "Deposit successful!";
-    header("Location: account.php");
+    $redirect_url = "account.php?account_number=" . urlencode($account_number);
+    header("Location: $redirect_url");
 } else {
     echo "Error: " . mysqli_error($conn);
 }
 
-
 mysqli_close($conn);
+
 ?>

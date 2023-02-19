@@ -1,27 +1,32 @@
 <?php
 require("connect_db.php");
 
+session_start();
 
-$first_name = $_POST['first_name'];
-$password = $_POST["password"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require("connect_db.php");
 
-$sql = "SELECT * FROM customers WHERE first_name = ? AND password = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "ss", $first_name, $password);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+    $password = $_POST['password'];
+    $account_number = $_POST['account_number'];
 
+    $sql = "SELECT * FROM customers c, accounts a WHERE c.customer_id = a.customer_id AND a.account_number = ? AND c.password = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ss", $account_number, $password);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-if (mysqli_num_rows($result) > 0) {
-    header("Location: account.php");
-    exit();
-} else {
-    echo "Invalid username or password.";
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['customer_id'] = $row['customer_id'];
+        header("Location: account.php?account_number=" . urlencode($account_number));
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
 }
-
-
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
 
 ?>
 

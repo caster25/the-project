@@ -1,37 +1,53 @@
 <?php
-require("connect_db.php");
+session_start();
 
-$account_number = $_POST["account_number"];
+if (isset($_SESSION['customer_id'])) {
+    require("connect_db.php");
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+    if (isset($_GET['account_number'])) {
+        $account_number = $_GET['account_number'];
+        $query = "SELECT * FROM accounts WHERE account_number = ?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "s", $account_number);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
 
-$sql = "SELECT customers.first_name, accounts.account_number, customers.last_name, accounts.balance, accounts.open_date
-FROM accounts
-JOIN customers ON accounts.customer_id = customers.customer_id
-WHERE accounts.account_number = $account_number";
-$result = mysqli_query($conn, $sql);
+        if ($row) {
+            $balance = $row['balance'];
 
-if (mysqli_num_rows($result) == 0) {
-    echo "Account not found.";
-} else {
-    $row = mysqli_fetch_array($result);
+            echo "<h1>Account Summary</h1>";
+            echo "<p>Account number: " . $account_number . "</p>";
+            echo "<p>Current balance: $" . number_format($balance, 2) . "</p>";
+        } else {
+            echo "<p>Invalid account number.</p>";
+        }
+
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "<p>No account number specified.</p>";
+    }
+
+    $query = "SELECT * FROM customers WHERE customer_id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $_SESSION['customer_id']);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+
     $first_name = $row['first_name'];
-    echo "<h2>Welcome, $first_name!</h2>";
-    echo "<table>";
-    echo "<tr><th>Account Number</th> <th>First Name</th> <th>Last Name</th> <th>Balance</th> <th>Open Date</th> </tr>";
-    echo "<tr>";
-    echo "<td>" . $row['account_number'] . "</td>";
-    echo "<td>" . $row['first_name'] . "</td>";
-    echo "<td>" . $row['last_name'] . "</td>";
-    echo "<td>" . $row['balance'] . "</td>";
-    echo "<td>" . $row['open_date'] . "</td>";
-    echo "</tr>";
-    echo "</table>";
-}
+    $last_name = $row['last_name'];
 
-mysqli_close($conn);
+    echo "<h2>Customer Information</h2>";
+    echo "<p>Name: " . $first_name . " " . $last_name . "</p>";
+
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+} else {
+    header("Location: customer_info.php");
+    exit();
+}
 ?>
 
 
