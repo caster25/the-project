@@ -93,7 +93,7 @@
       <input type="text" id="phone_number" name="phone_number" required><br>
 
       <label for="balance">Initial Deposit Amount:</label>
-      <input type="number" id="balance" name="balance" required><br>
+      <input type="number" id="balance" step="100" name="balance" required><br>
 
       <input type="submit" value="ADD">
     </form>

@@ -65,11 +65,15 @@
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
     $balance = $_POST['balance'];
-
-    $sql = "INSERT INTO customers (first_name, last_name, address, password, email, phone_number ) 
+    if (isset($_POST['first_name'])) {
+      $first_name = $_POST['first_name'];
+    } else {
+      $first_name = "";
+    }
+    
+    $sql = "INSERT INTO customers (first_name, last_name, address, password, email, phone_number) 
             VALUES ('$first_name', '$last_name', '$address', '$password', '$email', '$phone_number')";
     $result = mysqli_query($conn, $sql);
-
 
     if ($result) {
         $customer_id = mysqli_insert_id($conn);
@@ -80,9 +84,21 @@
         if ($result) {
             $account_number = mysqli_insert_id($conn);
 
-            echo "<h2>Bank account successfully created!</h2>";
-            echo "<p>Account Number: $account_number</p>";
-            echo "<p>Customer ID: $customer_id</p>";
+            $transaction_date = date('Y-m-d H:i:s');
+            $amount = $balance;
+            $description = "Initial deposit";
+
+            $sql = "INSERT INTO transactions (account_number, transaction_date, amount, description)
+                    VALUES ('$account_number', '$transaction_date', '$amount', '$description')";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                echo "<h2>Bank account successfully created!</h2>";
+                echo "<p>Account Number: $account_number</p>";
+                echo "<p>Customer ID: $customer_id</p>";
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
         } else {
             echo "Error: " . mysqli_error($conn);
         }
@@ -92,8 +108,8 @@
 
     mysqli_close($conn);
     ?>
+</div>
       <button type="submit">Go to Login</button>
     </form>
-  </div>
 </body>
 </html>

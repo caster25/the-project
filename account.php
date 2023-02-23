@@ -79,9 +79,9 @@
 <form>
 <?php
 session_start();
+require("connect_db.php");
 
 if (isset($_SESSION['customer_id'])) {
-    require("connect_db.php");
 
     if (isset($_GET['account_number'])) {
         $account_number = $_GET['account_number'];
@@ -96,13 +96,14 @@ if (isset($_SESSION['customer_id'])) {
             $balance = $row['balance'];
 
             echo "<h1>Account Summary</h1>";
-            echo "<h2>Account number:  . $account_number </h2>";
+            echo "<h2>Account number:   $account_number </h2>";
             echo "<h2>Current balance: $  ". number_format($balance, 2). "</h2>" ;
         } else {
             echo "<h1>Invalid account number.</h1>";
         }
-
+        
         mysqli_stmt_close($stmt);
+
     } else {
         echo "<h1>No account number specified.</h1>";
     }
@@ -119,7 +120,6 @@ if (isset($_SESSION['customer_id'])) {
 
     echo "<h1>Customer Information</h1>";
     echo "<h2>Name: " . $first_name . " " . $last_name . "</h2>";
-    
 
     echo "<h2>Latest time: " . date('Y-m-d H:i:s') . "</h2>";
 
@@ -129,15 +129,24 @@ if (isset($_SESSION['customer_id'])) {
     header("Location: customer_info.php");
     exit();
 }
+
 ?>
 
 </form>
-<form method="post" action="b_deposit.php" >
-  <button type="submit">Deposit</button>
+<form method="post" action="b_deposit.php" value="<?php $account_number=$$_se['account_number']; ?>">
+  <input type="hidden" name="account_number" >
+  <button type="submit">Deposit into account</button>
 </form>
-<form method="post" action="b_withdraw.php" >
+
+<form method="post" action="b_withdraw.php" value="<?php $account_number=$$_SESSION['account_number']; ?>">
   <button type="submit">withdraw</button>
 </form>
+
+<form method="post" action="transaction_listing.php">
+  <input type="hidden" name="account_number" value="<?php $account_number=$$_SESSION['account_number']; ?>">
+  <button type="submit">Transaction Listing</button>
+</form>
+
 <?php
 /*<form method="post" action="b_transfer.php">
  <button type="submit">transfer money</button>

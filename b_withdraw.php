@@ -71,9 +71,9 @@
 	</style>
 </head>
 <body>
-<form method="post" action="withdraw.php" onsubmit="return confirm('Are you sure you want to withdraw this amount?')">
-<label for="account_number">Account Number:</label>
-  <input type="text" name="account_number" required><br>
+<form method="post" action="withdraw.php" value="<?php $account_number=$_SESSION['account_number']; ?>">
+  <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
+  <label for="amount">Amount:</label>
   <label for="amount">amount:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
   <br>

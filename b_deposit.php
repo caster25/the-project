@@ -70,14 +70,16 @@
 		}
 	</style>
 </head>
-<form method="post" action="deposit.php" onsubmit="return confirm('Are you sure you want to deposit this amount?')">
-  <label for="account_number">Account Number:</label>
-  <input type="text" name="account_number" required>
-  <br>
+
+<form method="post" action="deposit.php" value="<?php $account_number=$_SESSION['account_number']; ?>">
+  <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <label for="amount">Amount:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to deposit" required><br> 
   <br>
   <button type="submit">Deposit</button>
 </form>
+
 </body>
 </html>
+
+
