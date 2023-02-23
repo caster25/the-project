@@ -152,9 +152,18 @@ if (isset($_SESSION['customer_id'])) {
  <button type="submit">transfer money</button>
 </form>*/
 ?>
-<form method="post" action="home.php">
+<?php
+if (isset($_POST['reset_account_number'])) {
+  $account_number = '';
+} else {
+  $account_number = $_GET['account_number'] ?? '';
+}
+?>
+<form method="post" action="home.php?account_number=">
+  <input type="hidden" name="reset_account_number">
   <button type="submit">went back earlier</button>
 </form>
+
 </form>
 </body>
 </html>

@@ -69,6 +69,14 @@
 		}
 	</style>
 </head>
+<?php
+if (isset($_POST['reset_account_number'])) {
+	$account_number = '';
+  } else {
+	$account_number = $_GET['account_number'] ?? '';
+  }
+  
+?>
 <body>
 	<h1>Login</h1>
 

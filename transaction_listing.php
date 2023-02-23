@@ -4,9 +4,14 @@ require("connect_db.php");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+session_start();
 
-$account_number = $_POST['account_number'];
-include 'account.php';
+if (!isset($_SESSION['account_number'])) {
+    // Redirect to login page or display an error message
+    exit("Error: Account number not found in session.");
+}
+
+$account_number = $_SESSION['account_number'];
 
 
 // Query the transactions table for the given account number
