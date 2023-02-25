@@ -89,6 +89,19 @@ function confirmWithdraw() {
   var amount = document.getElementsByName('amount')[0].value;
   return confirm("Are you sure you want to withdraw $" + amount + "?");
 }
+<button onclick="goBack()">Go Back</button>
+function goBack() {
+  window.history.back();
+}
 </script>
+
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
 </body>
 </html>

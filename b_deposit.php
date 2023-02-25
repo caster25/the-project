@@ -88,6 +88,13 @@ function confirmDeposit() {
   return confirm("Are you sure you want to deposit $" + amount + "?");
 }
 </script>
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 
 </body>
