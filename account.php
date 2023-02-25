@@ -125,33 +125,26 @@ if (isset($_SESSION['customer_id'])) {
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
-} else {
-    header("Location: customer_info.php");
-    exit();
-}
+
 
 ?>
 
 </form>
-<form method="post" action="b_deposit.php" value="<?php $account_number=$$_se['account_number']; ?>">
-  <input type="hidden" name="account_number" >
+<form method="post" action="b_deposit.php" >
+  <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
   <button type="submit">Deposit into account</button>
 </form>
 
-<form method="post" action="b_withdraw.php" value="<?php $account_number=$$_SESSION['account_number']; ?>">
-  <button type="submit">withdraw</button>
+<form method="post" action="b_withdraw.php">
+  <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
+  <button type="submit">Withdraw from account</button>
 </form>
 
 <form method="post" action="transaction_listing.php">
-  <input type="hidden" name="account_number" value="<?php $account_number=$$_SESSION['account_number']; ?>">
+  <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
   <button type="submit">Transaction Listing</button>
 </form>
 
-<?php
-/*<form method="post" action="b_transfer.php">
- <button type="submit">transfer money</button>
-</form>*/
-?>
 <?php
 if (isset($_POST['reset_account_number'])) {
   $account_number = '';
@@ -161,13 +154,18 @@ if (isset($_POST['reset_account_number'])) {
 ?>
 <form method="post" action="home.php?account_number=">
   <input type="hidden" name="reset_account_number">
-  <button type="submit">went back earlier</button>
+  <button type="submit">Go back to account list</button>
 </form>
 
-</form>
 </body>
 </html>
 
+<?php
+} else {
+    header("Location: customer_info.php");
+    exit();
+}
+?>
 
 
 

@@ -2,7 +2,6 @@
 require("connect_db.php");
 
 $account_number = $_POST['account_number'];
-$account_number = $_POST['account_number'];
 $amount = $_POST['amount'];
 
 $check_balance_sql = "SELECT balance FROM accounts WHERE account_number = '$account_number'";

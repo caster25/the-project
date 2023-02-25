@@ -71,8 +71,12 @@
 	</style>
 </head>
 <body>
-<form method="post" action="withdraw.php" value="<?php $account_number=$_SESSION['account_number']; ?>">
+<?php
+$account_number=$_POST['account_number'];
+?>
+<form method="post" action="withdraw.php" >
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
+  <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
   <label for="amount">Amount:</label>
   <label for="amount">amount:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
