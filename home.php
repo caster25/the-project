@@ -5,6 +5,14 @@
 	<link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Kanit">	
 	<style>
+		div {
+			background-color: rgb(225, 255, 255);
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			padding: 20px;
+			width: 400px;
+			margin: 0 auto;
+		}
 		body {
 			font-family: Kanit;
 			background-color: rgb(225, 255, 255);

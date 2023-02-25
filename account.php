@@ -76,6 +76,19 @@
 		button[type=submit]:hover {
 			background-color: rgb(0, 255, 205);
 		}
+		#popup-box {
+		    position: fixed;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    z-index: 9999;
+		    background-color: #FFFFFF;	
+		    border: 1px solid #CCCCCC;
+    		border-radius: 5px;
+    		padding: 20px;
+    		width: 400px;
+		  }
+		
 	</style>
 </head>
 
@@ -149,31 +162,33 @@ if (isset($_SESSION['customer_id'])) {
   <button type="submit">Transaction Listing</button>
 </form>
 
-<?php
-if (isset($_POST['reset_account_number'])) {
-  $account_number = '';
-} else {
-  $account_number = $_GET['account_number'] ?? '';
-}
-?>
-<form method="post" >
-  <input type="hidden" name="reset_account_number">
-  <button type="submit" onclick="confirmGoBack()">Go back to account list</button>
-</form>
 
-<script>
-function confirmGoBack() {
-  var confirmMsg = "Are you sure you want to go back to the account list?";
-  if (confirm(confirmMsg)) {
-    window.location.href = "home.php?account_number=";
-  } else {
-    // Do nothing - the user clicked "Cancel"
-  }
-}
+<body>
+  <div id="popup-box" style="display:none;">
+    <p>Are you sure you want to go back to the account list?</p>
+    <button onclick="hidePopup(true)">Yes</button>
+    <button onclick="hidePopup(false)">No</button>
+  </div>
 
-</script>
+  <button onclick="showPopup()">Go back to account list</button>
 
+  <form method="post" action="home.php" style="display:none;">
+    <button id="submit-button" type="submit">Submit form</button>
+  </form>
 
+  <script>
+    function showPopup() {
+      document.getElementById("popup-box").style.display = "block";
+    }
+
+    function hidePopup(confirmation) {
+      document.getElementById("popup-box").style.display = "none";
+      if (confirmation) {
+        // submit the form
+        document.getElementById("submit-button").click();
+      }
+    }
+  </script>
 </body>
 </html>
 
