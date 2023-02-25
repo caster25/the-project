@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Deposit</title>
 	<link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Kanit">	
 	<style>
@@ -79,23 +79,24 @@ $account_number=$_POST['account_number'];
   <label for="amount">Amount:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to deposit" required><br> 
   <br>
-  <button type="submit">Deposit</button>
+  <button type="submit">Deposit</button><br>
+
+
+	<script>
+	function confirmDeposit() {
+	  var amount = document.getElementsByName('amount')[0].value;
+	  return confirm("Are you sure you want to deposit $" + amount + "?");
+	}
+
+	</script>
+	<button onclick="goBack()">Go Back</button>
+
+	<script>
+	function goBack() {
+ 	 window.history.back();
+	}
+	</script>
 </form>
-
-<script>
-function confirmDeposit() {
-  var amount = document.getElementsByName('amount')[0].value;
-  return confirm("Are you sure you want to deposit $" + amount + "?");
-}
-</script>
-<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-
 
 </body>
 </html>

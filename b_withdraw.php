@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Withdraw</title>
 	<link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Kanit">	
 	<style>
@@ -78,30 +78,23 @@ $account_number=$_POST['account_number'];
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
   <label for="amount">Amount:</label>
-  <label for="amount">amount:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
   <br>
-  <button type="submit">withdraw</button>
-</form>
+  <button type="submit">withdraw</button><br>
 
-<script>
-function confirmWithdraw() {
-  var amount = document.getElementsByName('amount')[0].value;
-  return confirm("Are you sure you want to withdraw $" + amount + "?");
-}
-<button onclick="goBack()">Go Back</button>
-function goBack() {
-  window.history.back();
-}
-</script>
+	<script>
+	function confirmWithdraw() {
+	  var amount = document.getElementsByName('amount')[0].value;
+	  return confirm("Are you sure you want to withdraw $" + amount + "?");
+	}
+	
+	</script>
+	<button onclick="goBack()">Go Back</button>
 
-<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-
+	<script>
+	function goBack() {
+ 	 window.history.back();
+	}
+	</script>
 </body>
 </html>

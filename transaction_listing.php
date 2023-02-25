@@ -1,3 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Kanit">	
+			
+	<style>
+		body {
+			background-color: rgb(225, 255, 255);
+			font-family: Kanit;
+			padding: 20px;
+		}
+		h1 {
+			color: #333333;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+    	h2 {
+			color: #333333;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		form {
+			background-color: #FFFFFF;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			padding: 20px;
+			width: 400px;
+			margin: 0 auto;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type=text],
+		input[type=password] {
+			border: 1px solid #CCCCCC;
+			border-radius: 3px;
+			padding: 8px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+		input[type=submit] {
+			background-color: #4CAF50;
+			border: none;
+			color: #FFFFFF;
+			padding: 10px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type=submit]:hover {
+			background-color: #3E8E41;
+		}
+		button[type=submit] {
+			background-color: rgb(0, 205, 255);
+			border: none;
+			color: #FFFFFF;
+			padding: 10px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		button[type=submit]:hover {
+			background-color: rgb(0, 255, 205);
+		}
+	</style>
+</head>
+<body>
+    
+<form>
 <?php
 require("connect_db.php");
 
@@ -30,5 +113,17 @@ if($result->num_rows > 0){
 }
 
 mysqli_close($conn);
-?>
 
+?>
+</form>
+
+<button onclick="goBack()">Back</button>
+<table>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+</table>
+</body>
+</html>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Account</title>
 	<link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Kanit">	
 			
@@ -75,6 +78,7 @@
 		}
 	</style>
 </head>
+
 <body>
 <form>
 <?php
@@ -152,18 +156,21 @@ if (isset($_POST['reset_account_number'])) {
   $account_number = $_GET['account_number'] ?? '';
 }
 ?>
-<form method="post" action="home.php?account_number=">
+<form method="post" >
   <input type="hidden" name="reset_account_number">
   <button type="submit" onclick="confirmGoBack()">Go back to account list</button>
 </form>
 
 <script>
 function confirmGoBack() {
-    var confirmMsg = "Are you sure you want to go back to the account list?";
-    if (confirm(confirmMsg)) {
-        window.location.href = "home.php?account_number=";
-    }
+  var confirmMsg = "Are you sure you want to go back to the account list?";
+  if (confirm(confirmMsg)) {
+    window.location.href = "home.php?account_number=";
+  } else {
+    // Do nothing - the user clicked "Cancel"
+  }
 }
+
 </script>
 
 
@@ -171,9 +178,6 @@ function confirmGoBack() {
 </html>
 
 <?php
-} else {
-    header("Location: customer_info.php");
-    exit();
 }
 ?>
 
