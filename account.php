@@ -154,8 +154,18 @@ if (isset($_POST['reset_account_number'])) {
 ?>
 <form method="post" action="home.php?account_number=">
   <input type="hidden" name="reset_account_number">
-  <button type="submit">Go back to account list</button>
+  <button type="submit" onclick="confirmGoBack()">Go back to account list</button>
 </form>
+
+<script>
+function confirmGoBack() {
+    var confirmMsg = "Are you sure you want to go back to the account list?";
+    if (confirm(confirmMsg)) {
+        window.location.href = "home.php?account_number=";
+    }
+}
+</script>
+
 
 </body>
 </html>

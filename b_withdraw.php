@@ -74,7 +74,7 @@
 <?php
 $account_number=$_POST['account_number'];
 ?>
-<form method="post" action="withdraw.php" >
+<form method="post" action="withdraw.php" onsubmit="return confirmWithdraw();">
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
   <label for="amount">Amount:</label>
@@ -83,5 +83,12 @@ $account_number=$_POST['account_number'];
   <br>
   <button type="submit">withdraw</button>
 </form>
+
+<script>
+function confirmWithdraw() {
+  var amount = document.getElementsByName('amount')[0].value;
+  return confirm("Are you sure you want to withdraw $" + amount + "?");
+}
+</script>
 </body>
 </html>

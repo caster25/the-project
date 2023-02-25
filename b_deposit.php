@@ -73,7 +73,7 @@
 <?php
 $account_number=$_POST['account_number'];
 ?>
-<form method="post" action="deposit.php">
+<form method="post" action="deposit.php" onsubmit="return confirmDeposit()">
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
   <label for="amount">Amount:</label>
@@ -81,6 +81,14 @@ $account_number=$_POST['account_number'];
   <br>
   <button type="submit">Deposit</button>
 </form>
+
+<script>
+function confirmDeposit() {
+  var amount = document.getElementsByName('amount')[0].value;
+  return confirm("Are you sure you want to deposit $" + amount + "?");
+}
+</script>
+
 
 </body>
 </html>
