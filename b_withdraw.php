@@ -86,7 +86,7 @@ $account_number=$_POST['account_number'];
 	<script>
 	function confirmWithdraw() {
 	  var amount = document.getElementsByName('amount')[0].value;
-	  return confirm("Are you sure you want to withdraw ฿" + amount + "?");
+	  return confirm("คุณแน่ใจหรือไม่ว่าต้องการถอน ฿" + amount + "?");
 	}
 	
 	</script>

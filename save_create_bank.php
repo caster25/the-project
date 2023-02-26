@@ -96,7 +96,9 @@
             if ($result) {
                 echo "<h2>Bank account successfully created!</h2>";
                 echo "<p>Account Number: $account_number</p>";
-                echo "<p>Customer ID: $customer_id</p>";
+                echo "<p>Customer ID: $customer_id</p><br>";
+                echo "<p style=\"color: red;\">*โปรดแคปหน้าจอไว้เพื่อเก็บค่า 'Account Number ไว้สำหรับ Login เข้า'</p>";
+
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
