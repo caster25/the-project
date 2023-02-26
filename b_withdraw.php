@@ -78,15 +78,15 @@ $account_number=$_POST['account_number'];
 <form method="post" action="withdraw.php" onsubmit="return confirmWithdraw();">
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
-  <label for="amount">Enter the amount to be withdraw:</label>
+  <label for="amount">ใส่จำนวนเงินที่จะถอน:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
   <br>
-  <button type="submit">withdraw</button><br>
+  <button type="submit">ถอน</button><br>
 
 	<script>
 	function confirmWithdraw() {
 	  var amount = document.getElementsByName('amount')[0].value;
-	  return confirm("Are you sure you want to withdraw $" + amount + "?");
+	  return confirm("Are you sure you want to withdraw ฿" + amount + "?");
 	}
 	
 	</script>

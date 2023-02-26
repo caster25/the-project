@@ -79,16 +79,16 @@ $account_number=$_POST['account_number'];
 <form method="post" action="deposit.php" onsubmit="return confirmDeposit()">
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
-  <label for="amount">Enter the amount to be deposited:</label>
+  <label for="amount">ใส่จำนวนเงินที่จะฝาก:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to deposit" required><br> 
   <br>
-  <button type="submit">Deposit</button><br>
+  <button type="submit">เงินฝาก</button><br>
 
 
 	<script>
 	function confirmDeposit() {
 	  var amount = document.getElementsByName('amount')[0].value;
-	  return confirm("Are you sure you want to deposit $" + amount + "?");
+	  return confirm("คุณแน่ใจหรือไม่ว่าต้องการฝากเงิน ฿" + amount + "?");
 	}
 
 	</script>

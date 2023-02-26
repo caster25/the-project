@@ -103,9 +103,9 @@ $sql = "SELECT * FROM transactions WHERE account_number = '$account_number' ORDE
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
-    echo "<h1>Transaction Listing for Account #$account_number</h1>";
+    echo "<h1>รายการธุรกรรมสำหรับบัญชี #$account_number</h1>";
     echo "<table>";
-    echo "<tr><th>Date</th><th>Description</th><th>Amount</th></tr>";
+    echo "<tr><th>วันที่</th><th>ลักษณะ</th><th>จำนวน</th></tr>";
 
 	while ($row = mysqli_fetch_assoc($result)) {
 		date_default_timezone_set('Asia/Bangkok');
@@ -115,9 +115,9 @@ if($result->num_rows > 0){
 		$amount = number_format($row['amount'], 2);
 	
 		// Set color based on description
-		if (strpos($description, 'Deposit') !== false || strpos($description, 'Initial deposit') !== false) {
+		if (strpos($description, 'เงินฝาก') !== false || strpos($description, 'Initial deposit') !== false) {
 			$color = 'green';
-		} elseif (strpos($description, 'Withdrawal') !== false) {
+		} elseif (strpos($description, 'การถอนเงิน') !== false) {
 			$color = 'red';
 			$amount = '-' . $amount; // Add negative sign for withdrawals
 		} else {

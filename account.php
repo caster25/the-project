@@ -112,9 +112,9 @@ if (isset($_SESSION['customer_id'])) {
         if ($row) {
             $balance = $row['balance'];
 
-            echo "<h1>Account Summary</h1>";
-            echo "<h2>Account number:   $account_number </h2>";
-            echo "<h2>Current balance: <span style='color: green;'> ฿  ". number_format($balance, 2). "</h2>" ;
+            echo "<h1>สรุปบัญชี</h1>";
+            echo "<h2>หมายเลขบัญชี:   $account_number </h2>";
+            echo "<h2>ยอดเงินปัจจุบัน: <span style='color: green;'> ฿  ". number_format($balance, 2). "</h2>" ;
         } else {
             echo "<h1>Invalid account number.</h1>";
         }
@@ -136,10 +136,10 @@ if (isset($_SESSION['customer_id'])) {
     $first_name = $row['first_name'];
     $last_name = $row['last_name'];
 
-    echo "<h1>Customer Information</h1>";
-    echo "<h2>Name: " . $first_name . " " . $last_name . "</h2>";
+    echo "<h1>ข้อมูลลูกค้า</h1>";
+    echo "<h2>ชื่อ: " . $first_name . " " . $last_name . "</h2>";
 
-    echo "<h2>Latest time: " . date('Y-m-d H:i:s') . "</h2>";
+    echo "<h2>เวลาล่าสุด: " . date('Y-m-d H:i:s') . "</h2>";
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
@@ -150,23 +150,23 @@ if (isset($_SESSION['customer_id'])) {
 </form>
 <form method="post" action="b_deposit.php" >
   <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
-  <button type="submit">Deposit into account</button>
+  <button type="submit">ฝากเข้าบัญชี</button>
 </form>
 
 <form method="post" action="b_withdraw.php">
   <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
-  <button type="submit">Withdraw from account</button>
+  <button type="submit">ถอนออกจากบัญชี</button>
 </form>
 
 <form method="post" action="transaction_listing.php">
   <input type="hidden" name="account_number" value="<?php print($account_number); ?>">
-  <button type="submit">Transaction Listing</button>
+  <button type="submit">รายการธุรกรรม</button>
 </form>
 
 
 <body>
   <div id="popup-box" style="display:none; ">
-    <p>Are you sure you want to go back to the account list?</p>
+    <p>คุณแน่ใจหรือไม่ว่าต้องการกลับไปที่รายการบัญชี</p>
     <button onclick="hidePopup(true)">Yes</button>
     <button onclick="hidePopup(false)">No</button>
   </div>

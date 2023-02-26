@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
         // Get the current time in 24-hour format
         $time = date('H:i:s');
         $transaction_date = date('Y-m-d H:i:s');
-        $description = "Deposit";
+        $description = "เงินฝาก";
         
 
         $sql = "INSERT INTO transactions (account_number, transaction_date, amount, description) VALUES (?, ?, ?, ?)";
