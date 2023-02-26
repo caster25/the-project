@@ -17,12 +17,13 @@
 			text-align: center;
 		}
 		form {
-			background-color: #FFFFFF;
-			border: 1px solid #CCCCCC;
-			border-radius: 5px;
-			padding: 20px;
-			width: 400px;
-			margin: 0 auto;
+  			font-size: 30px; /* Set the font size to 24px */
+  			background-color: #FFFFFF;
+		  	border: 1px solid #CCCCCC;
+  			border-radius: 5px;
+  			padding: 40px; /* Increase the padding to make the form larger */
+  			max-width: 800px; /* Set the maximum width of the form to 800px */
+  			margin: 0 auto; /* Center the form horizontally */
 		}
 		label {
 			display: block;
@@ -77,7 +78,7 @@ $account_number=$_POST['account_number'];
 <form method="post" action="withdraw.php" onsubmit="return confirmWithdraw();">
   <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
   <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
-  <label for="amount">Amount:</label>
+  <label for="amount">Enter the amount to be withdraw:</label>
   <input type="number" name="amount" step="0.01" placeholder="Enter amount to withdraw" required><br>
   <br>
   <button type="submit">withdraw</button><br>

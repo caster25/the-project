@@ -25,12 +25,13 @@
 			text-align: center;
 		}
 		form {
-			background-color: #FFFFFF;
-			border: 1px solid #CCCCCC;
-			border-radius: 5px;
-			padding: 20px;
-			width: 400px;
-			margin: 0 auto;
+  			font-size: 30px; /* Set the font size to 24px */
+  			background-color: #FFFFFF;
+		  	border: 1px solid #CCCCCC;
+  			border-radius: 5px;
+  			padding: 40px; /* Increase the padding to make the form larger */
+  			max-width: 800px; /* Set the maximum width of the form to 800px */
+  			margin: 0 auto; /* Center the form horizontally */
 		}
 		label {
 			display: block;
@@ -85,7 +86,6 @@
 require("connect_db.php");
 
 $account_number = $_POST['account_number'];
-
 $sql = "SELECT * FROM transactions WHERE account_number = '$account_number' ORDER BY transaction_date DESC";
 $result = $conn->query($sql);
 
@@ -105,7 +105,6 @@ if($result->num_rows > 0){
         echo "<td>$amount</td>";
         echo "</tr>";
     }
-
     echo "</table>";
 } else {
     echo "No transactions found for Account #$account_number";
@@ -115,17 +114,14 @@ mysqli_close($conn);
 
 ?>
 
-<form method="post" action="account.php">
-    <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
-    <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
-    <button onclick="goBack()" style="background-color: white; color: black; float: right;">Go Back</button>
-
-
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
 </form>
+<button onclick="goBack()" style="background-color: white; color: black; float: right;">Go Back</button>
+<table>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+</table>
 </body>
 </html>
