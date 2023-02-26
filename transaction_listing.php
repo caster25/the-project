@@ -14,6 +14,7 @@
 			font-family: Kanit;
 			padding: 20px;
 		}
+
 		h1 {
 			color: #333333;
 			margin-bottom: 20px;
@@ -74,13 +75,25 @@
 			border-radius: 5px;
 			cursor: pointer;
 		}
+        button[type=onclick] {
+            background-color: white; 
+            color: black; 
+            float: right; 
+            position: fixed;
+		}
 		button[type=submit]:hover {
 			background-color: rgb(0, 255, 205);
 		}
 	</style>
 </head>
 <body>
-    
+    <button onclick="goBack()" style="background-color: white; color: black;  float: right; position: fixed;" >Go Back</button>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
 <form>
 <?php
 require("connect_db.php");
@@ -94,17 +107,31 @@ if($result->num_rows > 0){
     echo "<table>";
     echo "<tr><th>Date</th><th>Description</th><th>Amount</th></tr>";
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $transaction_date = date('m/d/Y h:i A', strtotime($row['transaction_date']));
-        $description = $row['description'];
-        $amount = number_format($row['amount'], 2);
-
-        echo "<tr>";
-        echo "<td>$transaction_date</td>";
-        echo "<td>$description</td>";
-        echo "<td>$amount</td>";
-        echo "</tr>";
-    }
+	while ($row = mysqli_fetch_assoc($result)) {
+		date_default_timezone_set('Asia/Bangkok');
+		$time = date('H:i:s');
+		$transaction_date = date('m/d/Y H:i:s', strtotime($row['transaction_date']));
+		$description = $row['description'];
+		$amount = number_format($row['amount'], 2);
+	
+		// Set color based on description
+		if (strpos($description, 'Deposit') !== false || strpos($description, 'Initial deposit') !== false) {
+			$color = 'green';
+		} elseif (strpos($description, 'Withdrawal') !== false) {
+			$color = 'red';
+			$amount = '-' . $amount; // Add negative sign for withdrawals
+		} else {
+			$color = 'black';
+		}
+	
+		echo "<tr>";
+		echo "<td>$transaction_date</td>";
+		echo "<td >$description</td>";
+		echo "<td style=\"color: $color;\">฿$amount</td>"; // Set color for amount column
+		echo "</tr>";
+	}
+	
+	
     echo "</table>";
 } else {
     echo "No transactions found for Account #$account_number";
@@ -113,15 +140,6 @@ if($result->num_rows > 0){
 mysqli_close($conn);
 
 ?>
-
 </form>
-<button onclick="goBack()" style="background-color: white; color: black; float: right;">Go Back</button>
-<table>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-</table>
 </body>
 </html>

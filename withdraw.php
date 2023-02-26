@@ -104,9 +104,12 @@ if ($withdraw_amount > $current_balance) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
+		date_default_timezone_set('Asia/Bangkok');
+
+		$time = date('H:i:s');
         $transaction_date = date('Y-m-d H:i:s');
         $description = "Withdrawal";
-
+		
         $sql = "INSERT INTO transactions (account_number, transaction_date, amount, description) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssds", $account_number, $transaction_date, $withdraw_amount, $description);

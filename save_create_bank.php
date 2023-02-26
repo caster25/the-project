@@ -83,7 +83,8 @@
 
         if ($result) {
             $account_number = mysqli_insert_id($conn);
-
+            date_default_timezone_set('Asia/Bangkok');
+            $now = date('m/d/Y h:i A');
             $transaction_date = date('Y-m-d H:i:s');
             $amount = $balance;
             $description = "Initial deposit";

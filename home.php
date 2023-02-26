@@ -101,6 +101,19 @@ if (isset($_POST['reset_account_number'])) {
 	<form method="post" action="create_bank.php">
 		<button type="submit">Create an account</button>
 	</form>
+
+
 </body>
+<?php
+/*
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+  <select name="lang" onchange="this.form.submit()">
+    <option value="en" <?php if ($_POST['lang'] == 'en') { echo 'selected'; } ?>>English</option>
+    <option value="fr" <?php if ($_POST['lang'] == 'fr') { echo 'selected'; } ?>>Français</option>
+    <option value="es" <?php if ($_POST['lang'] == 'es') { echo 'selected'; } ?>>Español</option>
+  </select>
+</form>
+*/
+?>
 </html>
 

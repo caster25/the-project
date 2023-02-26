@@ -16,8 +16,13 @@ if ($result->num_rows > 0) {
     $result = $stmt->execute();
 
     if ($result) {
+        date_default_timezone_set('Asia/Bangkok');
+
+        // Get the current time in 24-hour format
+        $time = date('H:i:s');
         $transaction_date = date('Y-m-d H:i:s');
         $description = "Deposit";
+        
 
         $sql = "INSERT INTO transactions (account_number, transaction_date, amount, description) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
