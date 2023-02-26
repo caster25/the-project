@@ -117,7 +117,6 @@ if (mysqli_num_rows($result) > 0) {
     echo "<h1>Invalid username or password.</h1>";
 }
 
-// add this line to also send the account number to account.php
 $_SESSION['account_number'] = $account_number;
 
 

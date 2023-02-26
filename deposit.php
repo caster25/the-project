@@ -6,13 +6,10 @@ $account_number = $_POST['account_number'];
 $amount = $_POST['amount'];
 $transaction_type = 'deposit';
 $datetime = date('Y-m-d H:i:s');
-
-// Prepare a SELECT query to check if the account number exists
 $sql = "SELECT * FROM accounts WHERE account_number = '$account_number'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Prepare an UPDATE query to update the balance and open date of the account
     $sql = "UPDATE accounts SET balance = balance + ?, open_date = ? WHERE account_number = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("dss", $amount, $datetime, $account_number);
@@ -22,7 +19,6 @@ if ($result->num_rows > 0) {
         $transaction_date = date('Y-m-d H:i:s');
         $description = "Deposit";
 
-        // Prepare an INSERT query to insert a new transaction record
         $sql = "INSERT INTO transactions (account_number, transaction_date, amount, description) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssds", $account_number, $transaction_date, $amount, $description);

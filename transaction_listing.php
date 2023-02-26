@@ -86,7 +86,6 @@ require("connect_db.php");
 
 $account_number = $_POST['account_number'];
 
-// Query the transactions table for the given account number
 $sql = "SELECT * FROM transactions WHERE account_number = '$account_number' ORDER BY transaction_date DESC";
 $result = $conn->query($sql);
 
@@ -115,15 +114,18 @@ if($result->num_rows > 0){
 mysqli_close($conn);
 
 ?>
-</form>
 
-<button onclick="goBack()">Back</button>
-<table>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-</table>
+<form method="post" action="account.php">
+    <input type="hidden" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>">
+    <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer_id); ?>">
+    <button onclick="goBack()" style="background-color: white; color: black; float: right;">Go Back</button>
+
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+</form>
 </body>
 </html>

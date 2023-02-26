@@ -89,7 +89,9 @@ $account_number=$_POST['account_number'];
 	}
 	
 	</script>
-	<button onclick="goBack()">Go Back</button>
+	<form>
+  		<button onclick="goBack()" style="background-color: white; color: black; float: right;">Go Back</button>
+	</form>
 
 	<script>
 	function goBack() {

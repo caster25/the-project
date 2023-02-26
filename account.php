@@ -184,7 +184,6 @@ if (isset($_SESSION['customer_id'])) {
     function hidePopup(confirmation) {
       document.getElementById("popup-box").style.display = "none";
       if (confirmation) {
-        // submit the form
         document.getElementById("submit-button").click();
       }
     }
